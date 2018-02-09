@@ -52,3 +52,13 @@ def displayBoard(missedLetters, correctLetters, secretWord):
     for letter in missedLetters:
         print(letter, end=' ')
     print()
+
+    blanks = '_' * len(secretWord)
+
+    for i in range(len(secretWord)):
+        if secretWord[i] in correctLetters:
+            blanks = blanks[:i] + secretWord[i] + blanks[i+1:]
+
+    for letter in blanks:
+        print(letter, end=' ')
+    print()
