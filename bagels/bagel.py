@@ -8,7 +8,7 @@ def getSecretNum():
     numbers = list(range(10))
     random.shuffle(numbers)
     secretNum = ' '
-    for i in range(numDigits):
+    for i in range(NUM_DIGITS):
         secretNum += str(numbers[i])
     return seceretNum
 
@@ -47,3 +47,26 @@ print('When I say: That means: ')
 print('Bagels None are correct')
 print('Pico one is correct but in wrong position')
 print('Fermi one is correct and in the right position')
+
+while True:
+    secretNum = getSecretNum()
+    print('I have a number')
+
+    guessesTaken = 1
+    while guessesTaken <= MAX_GUESS:
+        guess = ''
+        while len(guess) != NUM_DIGITS:
+            print((guessesTaken))
+            guess = input()
+
+        print(getClues(guess, secretNum))
+        guessesTaken += 1
+
+        if guess == secretNum:
+            break
+        if guessesTaken > MAX_GUESS:
+            print('No more guesses')
+
+    print('Do you want to play again')
+    if not input().lower().startswith('y'):
+        break
