@@ -17,18 +17,17 @@ def getClues(guess, secretNum):
     if guess == secretNum:
         return 'You got it!'
 
-        clue = []
-
+        clues = []
         for i in range(len(guess)):
             if guess[i] == secretNum[i]:
-                clue.append('Fermi')
+                clues.append('Fermi')
             elif guess[i] in secretNum:
-                clue.append('Pico')
+                clues.append('Pico')
         if len(clue) == 0:
             return 'Bagels'
 
-        clue.sort()
-        return ' '.join(clue)
+        clues.sort()
+        return ' '.join(clues)
 
 
 def isOnlyDigits(num):
@@ -42,12 +41,9 @@ def isOnlyDigits(num):
         return True
 
 
-def playAgain():
-    print('Do you want to play again? (yes or no)')
-    return input().lower().startswith('y')
-
-
-NUMDIGITS = 3
-MAXGUESS = 10
-
-print(I am thinking of a number)
+print('I am thinking of a number')
+print('The clues I give are...')
+print('When I say: That means: ')
+print('Bagels None are correct')
+print('Pico one is correct but in wrong position')
+print('Fermi one is correct and in the right position')
