@@ -10,7 +10,7 @@ def getSecretNum():
     secretNum = ' '
     for i in range(NUM_DIGITS):
         secretNum += str(numbers[i])
-    return seceretNum
+    return secretNum
 
 
 def getClues(guess, secretNum):
@@ -23,7 +23,7 @@ def getClues(guess, secretNum):
                 clues.append('Fermi')
             elif guess[i] in secretNum:
                 clues.append('Pico')
-        if len(clue) == 0:
+        if len(clues) == 0:
             return 'Bagels'
 
         clues.sort()
