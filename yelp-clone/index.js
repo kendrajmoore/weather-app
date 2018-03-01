@@ -13,6 +13,16 @@ app.get('/', (req, res) => {
   res.render('home.handlebars')
 })
 
+app.get('/campgrounds', function(req, res){
+    var campgrounds = [
+      {name: 'Salmon Creek'}
+      {name: 'Granite Hill'}
+      {name: 'Mountain Goat Rest'}
+      {name: 'Budget Camp'}
+    ]
+    res.render('campgrounds');
+});
+
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
 })
