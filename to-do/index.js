@@ -1,9 +1,13 @@
 const express = require('express');
-const app = express()
+const app = express();
+const port = process.env.PORT || 3000,
+const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static)
+app.use(express.static(__dirname +'/public'));
+app.use(express.static(__dirname + '/views'));
+
 
 app.get('/', function(req, res){
   res.sendFile('index.html');
@@ -11,6 +15,6 @@ app.get('/', function(req, res){
 
 //app.use('/api/todos', todoRoutes);
 
-app.listen(3000, () => {
-  console.log('App listening on port 3000!')
+app.listen(port, function() => {
+  console.log('App listening ' + process.env.PORT)
 })
