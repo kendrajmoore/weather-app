@@ -1,28 +1,23 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
 // app.js
-const exphbs = require('express-handlebars');
+app.set('view engine', 'ejs')
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
-
-
-//server
 app.get('/', (req, res) => {
-  res.render('home.handlebars')
-})
+  res.render('landing');
+});
 
-app.get('/campgrounds', function(req, res){
+app.get('/campgrounds', (req,res) => {
+
     var campgrounds = [
-      {name: 'Salmon Creek'}
-      {name: 'Granite Hill'}
-      {name: 'Mountain Goat Rest'}
-      {name: 'Budget Camp'}
+      {name: 'Salmon Creek', image: 'https://unsplash.com/photos/h4bBVo_CpqQ' },
+      {name:  'Goat', image: 'https://unsplash.com/photos/ZuZK8D55_cw'},
+      {name:  'Boat', image: 'https://unsplash.com/photos/aCVIH_FuyjY'}
     ]
-    res.render('campgrounds');
+     res.render('campgrounds', {campgrounds: campgrounds});
 });
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
-})
+});
