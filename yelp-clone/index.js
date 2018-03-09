@@ -8,9 +8,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs')
 
 var campgrounds = [
-  {name: 'Salmon Creek', image: 'https://unsplash.com/photos/h4bBVo_CpqQ' },
-  {name:  'Goat', image: 'https://unsplash.com/photos/ZuZK8D55_cw'},
-  {name:  'Boat', image: 'https://unsplash.com/photos/aCVIH_FuyjY'}
+  {name: 'Salmon Creek', image: 'https://res.cloudinary.com/simpleview/image/fetch/c_fill,f_auto,h_452,q_75,w_982/http://res.cloudinary.com/simpleview/image/upload/v1469218578/clients/lanecounty/constitution_grove_campground_by_natalie_inouye_417476ef-05c3-464d-99bd-032bb0ee0bd5.png' },
+  {name:  'Goat', image: 'https://www.reserveamerica.com/webphotos/NH/pid270015/0/540x360.jpg'},
+  {name:  'Boat', image: 'https://i.pinimg.com/originals/ab/5e/c4/ab5ec4ff722b1f65b855af71ba78c6fc.jpg'}
 ]
 
 app.get('/', (req, res) => {
@@ -23,7 +23,8 @@ app.get('/campgrounds', (req,res) => {
 
 app.post('/campgrounds', (req, res) => {
   var name = req.body.name;
-  var newCampground = { name: name };
+  var image = req.body.image;
+  var newCampground = { name: name, image: image };
   campgrounds.push(newCampground);
   res.redirect('/campgrounds')
 })
