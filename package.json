@@ -1,7 +1,6 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +12,14 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "request": "^2.83.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kendrajmoore/weather-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kendrajmoore/weather-app/issues"
+  },
+  "homepage": "https://github.com/kendrajmoore/weather-app#readme",
+  "description": ""
 }
