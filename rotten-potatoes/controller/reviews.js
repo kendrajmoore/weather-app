@@ -1,14 +1,10 @@
-const Review = require('../models/review.js');
+var Review = require('./models/review.js');
 
-module.exports = (app) =>
+module.exports = (app) => {
 
   app.get('/', (req, res) => {
-    Review.find().then((reviews) => {
       res.render('reviews-index', { reviews: reviews });
-    }).catch((err) => {
-      console.log(err);
     })
-  })
 
   app.get('/reviews/new', (req, res) => {
     res.render('reviews-new', {});
@@ -16,7 +12,6 @@ module.exports = (app) =>
 
   app.post('/reviews', (req, res) => {
     Review.create(req.body).then((review) => {
-      console.log(review)
       res.redirect('/reviews/' + review._id) // Redirect to reviews/:id
     }).catch((err) => {
       console.log(err.message)
