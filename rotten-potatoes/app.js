@@ -21,6 +21,7 @@ mongoose.set('debug', true)
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+require('./controller/reviews')(app);
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')

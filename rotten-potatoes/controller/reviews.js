@@ -1,10 +1,14 @@
-var Review = require('./models/review.js');
+const Review = require('../models/review.js');
 
 module.exports = (app) => {
 
   app.get('/', (req, res) => {
-      res.render('reviews-index', { reviews: reviews });
-    })
+  Review.find().then((reviews) => {
+    res.render('reviews-index', {reviews: reviews});
+  }).catch((err) => {
+    console.log(err);
+  })
+})
 
   app.get('/reviews/new', (req, res) => {
     res.render('reviews-new', {});
