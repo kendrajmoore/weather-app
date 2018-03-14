@@ -23,11 +23,7 @@ module.exports = (app) => {
 //SHOW
 
 app.get('/campgrounds/:id', (req, res) => {
-  Campground.findById(req.params.id).then((campground) => {
-    res.render('campgrounds-show', { campground: campground })
-  }).catch((err) => {
-    console.log(err.message);
-  })
+  res.render('show');
 })
 
 //EDIT
