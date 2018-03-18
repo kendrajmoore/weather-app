@@ -24,7 +24,7 @@ var Blog = mongoose.model("Blog", blogSchema);
 
 // RESTFUL ROUTES
 
-app.get("/", function(req, res){
+app.get("/", (req, res) => {
    res.redirect("/blogs");
 });
 
@@ -40,7 +40,7 @@ app.get("/blogs", function(req, res){
 });
 
 // NEW ROUTE
-app.get("/blogs/new", function(req, res){
+app.get("/blogs/new", (req, res) => {
     res.render("new");
 });
 
@@ -72,8 +72,8 @@ app.get("/blogs/:id", function(req, res){
 });
 
 // EDIT ROUTE
-app.get("/blogs/:id/edit", function(req, res){
-    Blog.findById(req.params.id, function(err, foundBlog){
+app.get("/blogs/:id/edit", (req, res) => {
+    Blog.findById(req.params.id, (err, foundBlog) => {
         if(err){
             res.redirect("/blogs");
         } else {
@@ -84,9 +84,9 @@ app.get("/blogs/:id/edit", function(req, res){
 
 
 // UPDATE ROUTE
-app.put("/blogs/:id", function(req, res){
+app.put("/blogs/:id", (req, res) => {
     req.body.blog.body = req.sanitize(req.body.blog.body)
-   Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+   Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
       if(err){
           res.redirect("/blogs");
       }  else {
@@ -96,9 +96,9 @@ app.put("/blogs/:id", function(req, res){
 });
 
 // DELETE ROUTE
-app.delete("/blogs/:id", function(req, res){
+app.delete("/blogs/:id", (req, res) => {
    //destroy blog
-   Blog.findByIdAndRemove(req.params.id, function(err){
+   Blog.findByIdAndRemove(req.params.id, (err) => {
        if(err){
            res.redirect("/blogs");
        } else {
