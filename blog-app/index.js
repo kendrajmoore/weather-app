@@ -29,12 +29,12 @@ app.get("/", (req, res) => {
 });
 
 // INDEX ROUTE
-app.get("/blogs", function(req, res){
-   Blog.find({}, function(err, blogs){
+app.get("/blogs", (req, res) => {
+   Blog.find({}, (err, blogs) => {
        if(err){
            console.log("ERROR!");
        } else {
-          res.render("index", {blogs: blogs});
+          res.render("index", { blogs: blogs });
        }
    });
 });
@@ -45,12 +45,12 @@ app.get("/blogs/new", (req, res) => {
 });
 
 // CREATE ROUTE
-app.post("/blogs", function(req, res){
+app.post("/blogs", (req, res) => {
     // create blog
     console.log(req.body);
     console.log("===========")
     console.log(req.body);
-    Blog.create(req.body.blog, function(err, newBlog){
+    Blog.create(req.body.blog, (err, newBlog) => {
         if(err){
             res.render("new");
         } else {
@@ -61,12 +61,12 @@ app.post("/blogs", function(req, res){
 });
 
 // SHOW ROUTE
-app.get("/blogs/:id", function(req, res){
-   Blog.findById(req.params.id, function(err, foundBlog){
+app.get("/blogs/:id", (req, res) => {
+   Blog.findById(req.params.id, (err, foundBlog) => {
        if(err){
            res.redirect("/blogs");
        } else {
-           res.render("show", {blog: foundBlog});
+           res.render("show", { blog: foundBlog });
        }
    })
 });
@@ -77,7 +77,7 @@ app.get("/blogs/:id/edit", (req, res) => {
         if(err){
             res.redirect("/blogs");
         } else {
-            res.render("edit", {blog: foundBlog});
+            res.render("edit", { blog: foundBlog });
         }
     });
 })
