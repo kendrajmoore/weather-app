@@ -7,9 +7,16 @@ class DocumentsController < ApplicationController
   end
 
   def new
+    @docs = Docs.new
   end
 
   def create
+    @docs = Docs.new(doc_params)
+
+    if @docs.sav
+      redirect_to @docs
+    else
+      render 'new'
   end
 
   def edit
@@ -30,6 +37,7 @@ class DocumentsController < ApplicationController
   end
 
   def doc_params
+    params.require(:docs).permit(:tile, :content)
   end
 
 end
